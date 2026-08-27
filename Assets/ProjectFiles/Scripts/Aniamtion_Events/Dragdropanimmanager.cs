@@ -1,6 +1,7 @@
+using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections.Generic;
 
 // -----------------------------------------------------------------
 // One mechanism per page assumed. Page-indexed list of entries -
@@ -40,6 +41,8 @@ public class DragDropAnimManager : MonoBehaviour
         public List<Renderer> targetRenderers = new List<Renderer>();
         public Material highlightMaterial;
 
+        public GameObject dropTarget;
+
         public AnimationSource animation;
 
         [HideInInspector] public List<Material> originalMaterials;
@@ -58,7 +61,7 @@ public class DragDropAnimManager : MonoBehaviour
     private bool dragging = false;
     private Transform draggedTransform;
     private Vector3 dragPlaneOffset;
-    private float dragPlaneHeight;
+    //private float dragPlaneHeight;
 
     private Vector3 dragStartPosition;
     private Quaternion dragStartRotation;
@@ -114,6 +117,9 @@ public class DragDropAnimManager : MonoBehaviour
 
     private void TryBeginDrag(PageEntry entry)
     {
+        if (entry.dropTarget != null)
+            entry.dropTarget.SetActive(true);
+
         Ray ray = raycastCamera.ScreenPointToRay(Pointer.current.position.ReadValue());
         if (!Physics.Raycast(ray, out RaycastHit hit, 1000f, draggableLayers))
             return;
@@ -125,7 +131,7 @@ public class DragDropAnimManager : MonoBehaviour
         draggedTransform = entry.dragTarget.transform;
         dragStartPosition = draggedTransform.position;
         dragStartRotation = draggedTransform.rotation;
-        dragPlaneHeight = draggedTransform.position.y;
+        //ragPlaneHeight = draggedTransform.position.y;
         dragging = true;
 
         Vector3 pointerWorld = ScreenToPlanePoint(Pointer.current.position.ReadValue());
@@ -141,6 +147,8 @@ public class DragDropAnimManager : MonoBehaviour
 
     private void EndDrag(int pageIndex, PageEntry entry)
     {
+        if (entry.dropTarget != null)
+            entry.dropTarget.SetActive(false);
         dragging = false;
         EvaluateDrop(pageIndex, entry);
         draggedTransform = null;
@@ -149,11 +157,20 @@ public class DragDropAnimManager : MonoBehaviour
     private Vector3 ScreenToPlanePoint(Vector2 screenPos)
     {
         Ray ray = raycastCamera.ScreenPointToRay(screenPos);
-        Plane plane = new Plane(Vector3.up, new Vector3(0, dragPlaneHeight, 0));
+
+        // XY plane — allows movement on X and Y,
+        // while keeping Z fixed.
+        Plane plane = new Plane(
+            Vector3.forward,
+            new Vector3(0, 0, draggedTransform.position.z)
+        );
+
         if (plane.Raycast(ray, out float enter))
             return ray.GetPoint(enter);
 
-        return draggedTransform != null ? draggedTransform.position : Vector3.zero;
+        return draggedTransform != null
+            ? draggedTransform.position
+            : Vector3.zero;
     }
 
     private void EvaluateDrop(int pageIndex, PageEntry entry)

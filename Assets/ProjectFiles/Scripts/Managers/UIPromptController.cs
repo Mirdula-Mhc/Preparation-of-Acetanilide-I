@@ -88,18 +88,15 @@ public class UIPromptController : MonoBehaviour
                 if (panelData == null || panelData.panel == null)
                     continue;
 
-                if (panelData.enableOnce && panelData.hasBeenEnabledOnce)
-                    continue;
-
                 if (i == currentIndex)
                 {
+                    // Always show on its own page, even on revisit.
                     panelData.panel.SetActive(true);
-
-                    if (panelData.enableOnce)
-                        panelData.hasBeenEnabledOnce = true;
+                    panelData.hasBeenEnabledOnce = true;
                 }
                 else if (panelData.stayInUpcomingPages)
                 {
+                    // Only suppress the "carry forward" behavior once enableOnce has fired.
                     if (!panelData.enableOnce || !panelData.hasBeenEnabledOnce)
                     {
                         panelData.panel.SetActive(true);
@@ -188,4 +185,4 @@ public class UIPromptControllerEditor : Editor
         EditorUtility.SetDirty(controller);
     }
 }
-#endif
+#endif                                                                                                                                                                                                                                                                                                                     
