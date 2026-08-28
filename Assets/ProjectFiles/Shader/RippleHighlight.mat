@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Custom_RippleHighlight
+  m_Name: RippleHighlight
   m_Shader: {fileID: 4800000, guid: a397bae6bd2c0084ba32113bfaa80937, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

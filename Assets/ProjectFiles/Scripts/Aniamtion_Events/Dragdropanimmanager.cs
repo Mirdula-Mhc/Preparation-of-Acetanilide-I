@@ -34,6 +34,9 @@ public class DragDropAnimManager : MonoBehaviour
         [Tooltip("Trigger collider marking the valid drop zone. Must have 'Is Trigger' checked.")]
         public Collider snapZone;
 
+        [Tooltip("If true, only bounding-box overlap is required to snap — rotation is ignored entirely. If false, the object's rotation must also be within snapAngle of snapZone's rotation.")]
+        public bool overlapOnly = true;
+
         [Tooltip("Max rotation difference (degrees) from snapZone's rotation to count as a valid drop. Leave at 180 to ignore rotation entirely and only check overlap.")]
         public float snapAngle = 180f;
 
@@ -175,14 +178,19 @@ public class DragDropAnimManager : MonoBehaviour
 
     private void EvaluateDrop(int pageIndex, PageEntry entry)
     {
+        Physics.SyncTransforms();
         Transform obj = entry.dragTarget.transform;
+        Debug.Log($"[DragDrop] drag bounds: center={entry.dragTarget.bounds.center}, size={entry.dragTarget.bounds.size}");
+        Debug.Log($"[DragDrop] snap bounds: center={entry.snapZone.bounds.center}, size={entry.snapZone.bounds.size}");
 
         bool overlapping = entry.dragTarget.bounds.Intersects(entry.snapZone.bounds);
         float angle = Quaternion.Angle(obj.rotation, entry.snapZone.transform.rotation);
 
-        Debug.Log($"[DragDrop] Page {pageIndex} release check — overlapping={overlapping}, angle={angle:F2} (max {entry.snapAngle})");
+        bool rotationOk = entry.overlapOnly || angle <= entry.snapAngle;
 
-        if (overlapping && angle <= entry.snapAngle)
+        Debug.Log($"[DragDrop] Page {pageIndex} release check — overlapping={overlapping}, angle={angle:F2} (overlapOnly={entry.overlapOnly}, max {entry.snapAngle})");
+
+        if (overlapping && rotationOk)
         {
             Debug.Log($"[DragDrop] Page {pageIndex} — SNAP PASSED, snapping and triggering animation.");
             obj.position = entry.snapZone.transform.position;
@@ -272,4 +280,5 @@ public class DragDropAnimManager : MonoBehaviour
     }
 
     public bool OwnsPage(int pageIndex) => FindEntry(pageIndex) != null;
+
 }
