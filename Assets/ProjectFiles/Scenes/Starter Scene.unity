@@ -4389,7 +4389,7 @@ MonoBehaviour:
       animator: {fileID: 0}
       clip: {fileID: 0}
     originalMaterials: []
-  - pageIndex: 0
+  - pageIndex: 6
     dragTarget: {fileID: 8567907583269901117}
     snapZone: {fileID: 313102882}
     overlapOnly: 1
