@@ -3,7 +3,67 @@ guid: 4d333f8ddec1bfc43abec0ead909b7af
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bonds
+    second: {fileID: 2100000, guid: 5327a596c1c5ffe448845c8886523d65, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bonds.002
+    second: {fileID: 2100000, guid: 830edbaf0799fec4b847937c9f420f51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Charges.001
+    second: {fileID: 2100000, guid: f14b5e42a390f544891076b12dab4f17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Charges.003
+    second: {fileID: 2100000, guid: 10d8389ca45c53042812b9406215eb90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Charges.004
+    second: {fileID: 2100000, guid: 55a6bb9dea0ee5440bc293f38398c6d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 1926cfd6b142cfd41ac83cbc342ba190, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 2fe0301faf6277a43bb71cfa8ea2a93d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 488c7824a1e6ec24d8578a37dd9c4ea2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: fb489cb852f79ba429c854e4446c20d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Molecule_Set_1_M
+    second: {fileID: 2100000, guid: e8d43939fd306a44492782cddc0fe96c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Molecule_Set_1_M.001
+    second: {fileID: 2100000, guid: b6dacc60bd6c2164fa69b4cf844ec67c, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Molecule set 1_Molecule_Set_1_M_AlbedoTransparency
+    second: {fileID: 2800000, guid: 17f1a107b05da1047a19e5cc923237bf, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -91,7 +151,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
