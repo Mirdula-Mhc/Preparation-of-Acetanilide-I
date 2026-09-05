@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom_URP_TurquoiseLiquid
+  m_Shader: {fileID: 4800000, guid: 49caf71e5975de847b62d74aa510d9d6, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AnimationSpeed: 1.5
+    - _BoilFrequency: 12
+    - _BoilSpeed: 2.77
+    - _BoilStrength: 0.146
+    - _DepthColorStrength: 3
+    - _EdgeSoftness: 0.19
+    - _FreezeAnimation: 0.045
+    - _FresnelPower: 0.47
+    - _FresnelStrength: 0
+    - _LiquidBottom: -4.16
+    - _LiquidTop: -0.07
+    - _NoiseScale: 7.86
+    - _NoiseSpeed: 0.38
+    - _NoiseStrength: 0
+    - _NormalStrength: 0.08
+    - _NormalUpThreshold: 0
+    - _Opacity: 0.9
+    - _PrimaryWaveScale: 0.1
+    - _PrimaryWaveSpeed: 0
+    - _PulseSecondarySpeed: 0
+    - _PulseSecondaryStrength: 0
+    - _PulseSpeed: 0
+    - _PulseStrength: 0
+    - _RippleIntensity: 0.362
+    - _SecondaryWaveScale: 0.1
+    - _SecondaryWaveSpeed: 0
+    - _Smoothness: 1
+    - _SpecularStrength: 2
+    - _SurfaceBand: 0.01
+    - _SurfaceDisplacement: 0
+    - _Transparency: 0
+    m_Colors:
+    - _DeepWaterColor: {r: 1, g: 0.5490196, b: 0, a: 1}
+    - _WaterColor: {r: 0.49400002, g: 0.20245902, b: 0.07693443, a: 1}
+    - _WaveDirection: {r: 4.9, g: 0, b: 5.45, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
